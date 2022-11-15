@@ -1,0 +1,151 @@
+#include<stdio.h>
+// function to find the fibbonacci of a number 
+// fibbonacci of first two numbers are not printed in this function
+// because they are known values
+void getFibbonacci(int n){
+
+  int term1 = 0, term2 = 1; // initialize first and second terms
+  int nextTerm = term1 + term2;  // initialize the next term (3rd term) 
+   for (int i = 3; i <= n; i++) {
+    printf("%d, ", nextTerm);
+    term1 = term2;
+    term2 = nextTerm;
+    nextTerm = term1 + term2;
+  }
+}
+// in all the below functions 'n' stands for the length of array
+
+// function to find the element with the largest value in array  
+void largestInArray(int array[],int n){ 
+ 
+  // storing the largest number to array[0]
+  for (int i = 1; i <n ; i++) {
+    if (array[0] < array[i]) {
+      array[0] = array[i];
+    }
+  }
+
+  printf("The element with the largest value in given array : = %d", array[0]);
+}
+
+// function to find the element with the least value in array
+void minInArray(int array[],int n ){
+    //Initialize min with first element of array.    
+    int min = array[0];    
+        
+    //Loop through the array    
+    for (int i = 0; i < n; i++) {     
+        //Compare elements of array with min    
+       if(array[i] < min)    
+           min = array[i];    
+    }      
+    printf("The  element with minimum value present in given array: %d\n", min);    
+}
+
+// fuction to sort the array in ascending order
+void ascendingArray(int array[] , int n){
+    for (int i = 0; i < n; i++){
+            for (int j = i + 1; j < n; j++)
+            {
+                if (array[i] > array[j]) 
+                {
+                    int a =  array[i];
+                    array[i] = array[j];
+                    array[j] = a;
+                }
+            }
+    }
+    for (int i = 0; i < n; i++)
+            printf("%d\n", array[i]);
+
+}
+// function to print the array in reverse order
+void reverseArray(int array[],int n){
+    for(int i = 0; i<n/2; i++){
+        int temp = array[i];
+        array[i] = array[n-i-1];
+        array[n-i-1] = temp;
+    }
+    for(int i = 0; i < n; i++){
+        printf("%d,", array[i]);
+    }
+}
+
+// function to print the most repeating element in the array
+void getRepeatingElement(int array[], int n) 
+{
+    int repElement, count;
+     int maxCount = 0;
+     
+    for(int i = 0; i< n; i++)   //For loop to hold each element
+    {
+        count = 1;
+        for(int j = i+1; j < n; j++)  //For loop to check for duplicate elements
+        {
+            if(array[j] == array[i])
+            {
+                count++;     //Increment  count
+                // If count of current element is more than 
+               // maxCount, then update maxElement 
+                if(count > maxCount)
+                {
+                    repElement = array[j];
+                }
+            }
+        }
+    }
+    printf("%d",repElement);
+}
+
+// funtion to check if string is palindrome or not
+void palindromeOrNot(char string[],int n){
+  int check = 0;
+  for(int i=0;i < n ;i++){
+        if(string[i] != string[n-i-1]){
+            check = 1;
+            break;
+           }
+        }
+    
+    if (check) {
+        printf("%s is not a palindrome", string);
+    }    
+    else {
+        printf("%s is a palindrome", string);
+    }
+}
+
+Programs in Python
+# program to find HCF of two numbers
+def findHcf(x, y):  #x and y are the inputs
+    if x > y:
+        smaller = y
+    else:
+        smaller = x
+    for i in range(1, smaller+1):
+        if((x % i == 0) and (y % i == 0)):
+            hcf = i 
+    print(hcf)
+findHcf(9,8)
+
+# Python Program to find LCM of two input number
+def findLcm(x, y): #x and y are the inputs
+   if x > y:
+       greater = x
+   else:
+       greater = y
+
+   while(True):
+       if((greater % x == 0) and (greater % y == 0)):
+           lcm = greater
+           break
+       greater += 1
+
+   print(lcm)
+
+#Program to display calendar of the given month and year
+import calendar
+year = 2014  # year
+month = 11    # month
+
+print(calendar.month(year,month))
